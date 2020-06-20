@@ -1,0 +1,131 @@
+html {
+    background-color: #E4E9FD;
+    /* background-image: -webkit-linear-gradient(65deg, #A683E3 50%, #E4E9FD 50%); */
+    /** gradient is a way to make a custom gradient. make degree and percentage of colors*/
+    background: #67b26f;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #67b26f, #4ca2cd);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #67b26f, #4ca2cd);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    min-height: 1000px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+    color: #fff;
+    padding: 10px;
+}
+
+.box {
+    max-width: 400px;
+    margin: 50px auto;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
+}
+
+#heading {
+    background: #11998e;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #11998e, #38ef7d);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #11998e, #38ef7d);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    text-align: center;
+}
+
+.item {
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #F1F1F1;
+}
+
+.item:last-child {
+    border-bottom: 0;
+}
+
+input:checked+p {
+    /** all the paragraph after checked inputs */
+    text-decoration: line-through;
+    text-decoration-color: #38ef7d;
+}
+
+input[type="checkbox"] {
+    margin: 20px;
+    width: 20px;
+    height: 20px;
+}
+
+
+
+p {
+    margin: 0;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: 200;
+    color: #00204a;
+}
+
+form {
+    text-align: center;
+    margin-left: 20px;
+}
+
+button {
+    /* box-sizing: border-box; */
+    /* height: 100%; */
+    /* width: 100%; */
+
+    background: #a8ff78;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #a8ff78, #78ffd6);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #a8ff78, #78ffd6);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    /* border-radius: 100%; */
+    border-color: transparent;
+    /* background-color: #A683E3; */
+    color: #fff;
+    margin: 0;
+    margin-left: 10px;
+    padding: 20px;
+    font-size: 30px;
+    /* padding-bottom: 6px; */
+    border: 0;
+    border: none;
+    outline: none;
+    border-width: 0;
+}
+
+input[type="text"] {
+    text-align: center;
+    height: 60px;
+    top: 10px;
+    border: none;
+    background: transparent;
+    font-size: 20px;
+    font-weight: 200;
+    width: 313px;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    box-shadow: inset 0 -3px 0 0 #a8ff78;
+}
+
+::placeholder {
+    /** selects all placeholders */
+    color: grey;
+    opacity: 1;
+    font-family: 'Open Sans', sans-serif;
+}
+
+footer {
+    color: white;
+    color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
