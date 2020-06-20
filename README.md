@@ -21,5 +21,4 @@ Built with HTML/CSS/JS with Node JS with Express and EJS, implemented with herok
 - Fully redesigned
 
 ## (Quite ironcially) Todo
-- Clean and finalize code
-- Make heroku actually work
+- Add delete option
