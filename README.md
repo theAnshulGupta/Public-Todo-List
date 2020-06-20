@@ -3,6 +3,7 @@ A Public Todo List anyone can update. Add and strikethrough todos with this appl
 Built with HTML/CSS/JS with Node JS with Express and EJS, implemented with heroku at http://publictodolist.herokuapp.com/. 
 ## Features
 - Server side Todo list (original one was all JS based)
+- Displays current date
 - All updates to the list stay on the list on the server
 - Contains a visually appealing background 
 - Todos are added to a clean list
@@ -21,4 +22,4 @@ Built with HTML/CSS/JS with Node JS with Express and EJS, implemented with herok
 
 ## (Quite ironcially) Todo
 - Clean and finalize code
-- Make heroku completely online
+- Make heroku actually work
