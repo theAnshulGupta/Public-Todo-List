@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static("public"));
 
-let items = ["Buy Food", "Cook Food", "Eat Food"];
+let items = ["Daily Commit", "Study", "Walk outside", "Pet Dog", "Fix Bugs"];
 
 app.get("/", function (req, res) {
   let today = new Date();
