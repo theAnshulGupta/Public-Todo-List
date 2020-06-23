@@ -25,7 +25,6 @@ app.get("/", function (req, res) {
   };
 
   let day = today.toLocaleDateString("en-US", options);
-  console.log(items);
   res.render("list", {
     listTitle: day,
     newListItems: items,
@@ -37,10 +36,14 @@ app.post("/", function (req, res) {
   console.log(req.body);
 
   if (item != "") {
-    items.push(item);
+    if (req.body.list === "Work") {
+      workItems.push(item);
+      res.redirect("/work");
+    } else {
+      items.push(item);
+      res.redirect("/");
+    }
   }
-
-  res.redirect("/");
 });
 
 app.get("/work", function (req, res) {
@@ -54,6 +57,10 @@ app.post("/work", function (req, res) {
   let item = req.body.newItem;
   workItems.push(items);
   res.redirect("/work");
+});
+
+app.get("/about", function (req, res) {
+  res.render("about");
 });
 
 app.listen(process.env.PORT || 3000, function () {

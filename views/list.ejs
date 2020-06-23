@@ -1,46 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Todo List</title>
-    <link rel="stylesheet" href="css/styles.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&family=Open+Sans:wght@300&family=Ubuntu:wght@500&display=swap"
-      rel="stylesheet"
+<!-- prettier-ignore-->
+<%- include("header") %>
+
+<div id="heading" class="box">
+  <h1><%= listTitle %></h1>
+</div>
+
+<div class="box">
+  <% for(let i = 0; i < newListItems.length; i++) {%>
+  <div class="item">
+    <input type="checkbox" />
+    <p><%=newListItems[i]%></p>
+  </div>
+  <%}%>
+
+  <form class="item" action="/" method="POST">
+    <input
+      type="text"
+      name="newItem"
+      placeholder="New Item"
+      autocomplete="off"
     />
-    <script
-      src="https://kit.fontawesome.com/caad67a05c.js"
-      crossorigin="anonymous"
-    ></script>
-  </head>
-
-  <body>
-    <div id="heading" class="box">
-      <h1><%= listTitle %></h1>
-    </div>
-    s
-
-    <div class="box">
-      <% for(let i = 0; i < newListItems.length; i++) {%>
-      <div class="item">
-        <input type="checkbox" />
-        <p><%=newListItems[i]%></p>
-      </div>
-      <%}%>
-
-      <form class="item" action="/" method="POST">
-        <input
-          type="text"
-          name="newItem"
-          placeholder="New Item"
-          autocomplete="off"
-        />
-        <!-- prettier-ignore-->
-        <button type="submit" name="list" value=<%= listTitle %>>
+    <!-- prettier-ignore-->
+    <button type="submit" name="list" value=<%= listTitle %>>
           <i class="fas fa-plus-square"></i>
         </button>
-      </form>
-    </div>
-  </body>
-</html>
+  </form>
+</div>
+<!-- prettier-ignore-->
+<%- include("footer") %>
