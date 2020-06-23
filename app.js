@@ -25,11 +25,11 @@ app.get("/", function (req, res) {
   };
 
   let day = today.toLocaleDateString("en-US", options);
+  console.log(items);
   res.render("list", {
     listTitle: day,
     newListItems: items,
   });
-  items.pop();
 });
 
 app.post("/", function (req, res) {
@@ -46,7 +46,6 @@ app.post("/", function (req, res) {
 app.get("/work", function (req, res) {
   res.render("list", {
     listTitle: "Work List",
-    //* if list title is work list, then it will directly name it Work List instead of looking for a variable
     newListItems: workItems,
   });
 });
@@ -57,6 +56,6 @@ app.post("/work", function (req, res) {
   res.redirect("/work");
 });
 
-app.listen(process.env.PORT || 4000, function () {
+app.listen(process.env.PORT || 3000, function () {
   console.log("server listening on port 3000");
 });
