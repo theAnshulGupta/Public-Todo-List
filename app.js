@@ -15,7 +15,7 @@ app.use(
 app.use(express.static("public"));
 
 const items = ["Daily Commit", "Study", "Walk outside", "Pet Dog", "Fix Bugs"];
-const workItems = [];
+const workItems = ["Talk with boss", "Study", "Finish project", "Interview"];
 
 app.get("/", function (req, res) {
   const day = date.getDate();
