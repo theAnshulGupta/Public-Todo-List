@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const date = require(__dirname + "/date.js");
 
 const app = express();
 
@@ -13,18 +14,11 @@ app.use(
 
 app.use(express.static("public"));
 
-let items = ["Daily Commit", "Study", "Walk outside", "Pet Dog", "Fix Bugs"];
+const items = ["Daily Commit", "Study", "Walk outside", "Pet Dog", "Fix Bugs"];
+const workItems = [];
 
-let workItems = [];
 app.get("/", function (req, res) {
-  let today = new Date();
-  let options = {
-    weekday: "long",
-    day: "numeric",
-    month: "long",
-  };
-
-  let day = today.toLocaleDateString("en-US", options);
+  const day = date.getDate();
   res.render("list", {
     listTitle: day,
     newListItems: items,
@@ -32,9 +26,7 @@ app.get("/", function (req, res) {
 });
 
 app.post("/", function (req, res) {
-  let item = req.body.newItem;
-  console.log(req.body);
-
+  const item = req.body.newItem;
   if (item != "") {
     if (req.body.list === "Work") {
       workItems.push(item);
@@ -63,6 +55,4 @@ app.get("/about", function (req, res) {
   res.render("about");
 });
 
-app.listen(process.env.PORT || 3000, function () {
-  console.log("server listening on port 3000");
-});
+app.listen(process.env.PORT || 3000, function () {});
