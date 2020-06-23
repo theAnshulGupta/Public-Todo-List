@@ -1,5 +1,5 @@
 # Public-Todo-List
-A Public Todo List anyone can update. Add and strikethrough todos with this application. All todos stay on the server and are publicly visible. <br>
+A public server-side todo list anyone can update. Add and strikethrough todos with this application. All todos stay on the server and are publicly visible. <br>
 Built with HTML/CSS/JS with Node JS with Express and EJS, implemented with heroku at http://publictodolist.herokuapp.com/. 
 ## Features
 - Server side Todo list (original one was all JS based)
@@ -11,7 +11,8 @@ Built with HTML/CSS/JS with Node JS with Express and EJS, implemented with herok
   - Appends the list with another element
 - Click a checkbox to complete its task
   - Strikethrough appears, click again to remove
-- This visually appealing and well boxed todo list 
+- This visually appealing and well boxed todo list
+- Has additional work list and about page
 
 #### Variations from https://github.com/theAnshulGupta/Todo-List
 - Todos are updated server-side 
@@ -19,6 +20,7 @@ Built with HTML/CSS/JS with Node JS with Express and EJS, implemented with herok
 - Heroku website
 - Does not require download/codepen
 - Fully redesigned
+- Contains a second todo list and about page
 
 ## (Quite ironcially) Todo
 - Add delete option
