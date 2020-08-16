@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const _ = require("lodash");
 const mongoose = require("mongoose");
 
 const date = require(__dirname + "/date.js");
@@ -96,18 +97,34 @@ app.post("/", function (req, res) {
 
 app.post("/delete", function (req, res) {
   const checkedTask = req.body.checkbox;
-  Task.findByIdAndRemove(checkedTask, function (err) {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log("deleted");
-    }
-  });
-  res.redirect("/");
+  const listName = req.body.listName;
+
+  if (listName === day) {
+    Task.findByIdAndRemove(checkedTask, function (err) {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log("deleted");
+      }
+    });
+    res.redirect("/");
+  } else {
+    List.findOneAndUpdate(
+      { name: listName },
+      { $pull: { items: { _id: checkedTask } } },
+      function (err, foundList) {
+        if (err) {
+          console.log(err);
+        } else {
+          res.redirect("/" + listName);
+        }
+      }
+    );
+  }
 });
 
 app.get("/:customListName", function (req, res) {
-  const newList = req.params.customListName;
+  const newList = _.capitalize(req.params.customListName);
 
   List.findOne({ name: newList }, function (err, listExist) {
     if (err) {
