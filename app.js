@@ -40,24 +40,28 @@ const task3 = new Task({
   name: "Web Dev",
 });
 
-Task.insertMany([task1, task2, task3], function (err) {
-  if (err) {
-    console.log(err);
-  } else {
-    console.log("added");
-  }
-});
-
-// const items = ["Daily Commit", "Study", "Walk outside", "Pet Dog", "Fix Bugs"];
-// const workItems = ["Talk with boss", "Study", "Finish project", "Interview"];
+//! stop from duplicating tasks
+// Task.insertMany([task1, task2, task3], function (err) {
+//   if (err) {
+//     console.log(err);
+//   } else {
+//     console.log("added");
+//   }
+// });
 
 app.get("/", function (req, res) {
   const day = date.getDate();
-  res.render("list", {
-    listTitle: day,
-    newListItems: items,
+
+  Task.find({}, function (err, results) {
+    res.render("list", {
+      listTitle: day,
+      newListItems: results,
+    });
   });
 });
+
+//? const items = ["Daily Commit", "Study", "Walk outside", "Pet Dog", "Fix Bugs"];
+//? const workItems = ["Talk with boss", "Study", "Finish project", "Interview"];
 
 app.post("/", function (req, res) {
   const item = req.body.newItem;
