@@ -2,10 +2,11 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const _ = require("lodash");
 const mongoose = require("mongoose");
-
+const secrets = require(__dirname + "/password.json");
 const date = require(__dirname + "/date.js");
 const day = date.getDate();
 
+const atlas = secrets.atlas;
 const app = express();
 
 app.set("view engine", "ejs");
@@ -17,7 +18,7 @@ app.use(
 );
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost:27017/listDB", {
+mongoose.connect(atlas, {
   useUnifiedTopology: true,
   useNewUrlParser: true,
   useCreateIndex: true,
