@@ -1,5 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
+
 const date = require(__dirname + "/date.js");
 
 const app = express();
@@ -11,11 +13,43 @@ app.use(
     extended: true,
   })
 );
-
 app.use(express.static("public"));
 
-const items = ["Daily Commit", "Study", "Walk outside", "Pet Dog", "Fix Bugs"];
-const workItems = ["Talk with boss", "Study", "Finish project", "Interview"];
+mongoose.connect("mongodb://localhost:27017/listDB", {
+  useUnifiedTopology: true,
+  useNewUrlParser: true,
+  useCreateIndex: true,
+});
+
+const listSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+});
+
+const Task = mongoose.model("Task", listSchema);
+
+const task1 = new Task({
+  name: "Fix Bugs",
+});
+const task2 = new Task({
+  name: "Update Code",
+});
+const task3 = new Task({
+  name: "Web Dev",
+});
+
+Task.insertMany([task1, task2, task3], function (err) {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log("added");
+  }
+});
+
+// const items = ["Daily Commit", "Study", "Walk outside", "Pet Dog", "Fix Bugs"];
+// const workItems = ["Talk with boss", "Study", "Finish project", "Interview"];
 
 app.get("/", function (req, res) {
   const day = date.getDate();
