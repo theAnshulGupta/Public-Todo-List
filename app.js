@@ -40,23 +40,25 @@ const task3 = new Task({
   name: "Web Dev",
 });
 
-//! stop from duplicating tasks
-// Task.insertMany([task1, task2, task3], function (err) {
-//   if (err) {
-//     console.log(err);
-//   } else {
-//     console.log("added");
-//   }
-// });
-
 app.get("/", function (req, res) {
   const day = date.getDate();
 
   Task.find({}, function (err, results) {
-    res.render("list", {
-      listTitle: day,
-      newListItems: results,
-    });
+    if (results.length === 0) {
+      Task.insertMany([task1, task2, task3], function (err) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log("added");
+        }
+      });
+      res.redirect("/");
+    } else {
+      res.render("list", {
+        listTitle: day,
+        newListItems: results,
+      });
+    }
   });
 });
 
@@ -64,16 +66,33 @@ app.get("/", function (req, res) {
 //? const workItems = ["Talk with boss", "Study", "Finish project", "Interview"];
 
 app.post("/", function (req, res) {
-  const item = req.body.newItem;
-  if (item != "") {
-    if (req.body.list === "Work") {
-      workItems.push(item);
-      res.redirect("/work");
-    } else {
-      items.push(item);
-      res.redirect("/");
-    }
+  if (req.body.newItem != "") {
+    const task = new Task({
+      name: req.body.newItem,
+    });
+    task.save();
+    // if (req.body.list === "Work") {
+    //   workItems.push(item);
+    //   res.redirect("/work");
+    // } else {
+    //   items.push(item);
+    //   res.redirect("/");
+    // }
+
+    res.redirect("/");
   }
+});
+
+app.post("/delete", function (req, res) {
+  const checkedTask = req.body.checkbox;
+  Task.findByIdAndRemove(checkedTask, function (err) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("deleted");
+    }
+  });
+  res.redirect("/");
 });
 
 app.get("/work", function (req, res) {
