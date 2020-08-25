@@ -2,7 +2,7 @@
 A public server-side todo list anyone can update. Add and strikethrough todos with this application. All todos stay on the server and are publicly visible. <br>
 Built with HTML/CSS/JS with Node JS with Express and EJS, implemented with heroku at http://publictodolist.herokuapp.com/. 
 ## Features
-- Server side Todo list (original one was all JS based)
+- Server side Todo list (original one was all frontend based)
 - Displays current date
 - All updates to the list stay on the list on the server
 - Contains a visually appealing background 
